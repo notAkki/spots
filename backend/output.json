@@ -1,0 +1,606 @@
+[
+  {
+    "building": "Arts Lecture Hall",
+    "building_code": "AL",
+    "rooms": {
+      "105": {
+        "slots": []
+      },
+      "113": {
+        "slots": []
+      },
+      "116": {
+        "slots": []
+      },
+      "124": {
+        "slots": []
+      },
+      "208": {
+        "slots": []
+      },
+      "209": {
+        "slots": []
+      },
+      "210": {
+        "slots": []
+      },
+      "211": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.46894115,
+      -80.54187136
+    ]
+  },
+  {
+    "building": "Biology 1",
+    "building_code": "B1",
+    "rooms": {
+      "271": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.4707354,
+      -80.54298461
+    ]
+  },
+  {
+    "building": "Carl A. Pollock Hall",
+    "building_code": "CPH",
+    "rooms": {
+      "1346": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47095002,
+      -80.53933936
+    ]
+  },
+  {
+    "building": "Centre for Environmental and Information Technology",
+    "building_code": "EIT",
+    "rooms": {
+      "1015": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47149504,
+      -80.54206448
+    ]
+  },
+  {
+    "building": "Douglas Wright Engineering Building",
+    "building_code": "DWE",
+    "rooms": {
+      "1501": {
+        "slots": []
+      },
+      "1502": {
+        "slots": []
+      },
+      "1515": {
+        "slots": []
+      },
+      "2527": {
+        "slots": []
+      },
+      "3516": {
+        "slots": []
+      },
+      "3517": {
+        "slots": []
+      },
+      "3518": {
+        "slots": []
+      },
+      "3519": {
+        "slots": []
+      },
+      "3522": {
+        "slots": []
+      },
+      "3522A": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47007105,
+      -80.53970638
+    ]
+  },
+  {
+    "building": "Engineering 2",
+    "building_code": "E2",
+    "rooms": {
+      "1732": {
+        "slots": []
+      },
+      "1736": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47104345,
+      -80.54041224
+    ]
+  },
+  {
+    "building": "Environment 1",
+    "building_code": "EV1",
+    "rooms": {
+      "132": {
+        "slots": []
+      },
+      "225": {
+        "slots": []
+      },
+      "350": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.4683961,
+      -80.54262238
+    ]
+  },
+  {
+    "building": "Environment 2",
+    "building_code": "EV2",
+    "rooms": {
+      "2002": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.46786,
+      -80.54324
+    ]
+  },
+  {
+    "building": "Environment 3",
+    "building_code": "EV3",
+    "rooms": {
+      "1408": {
+        "slots": []
+      },
+      "3406": {
+        "slots": []
+      },
+      "3408": {
+        "slots": []
+      },
+      "3412": {
+        "slots": []
+      },
+      "4408": {
+        "slots": []
+      },
+      "4412": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.468159,
+      -80.543376
+    ]
+  },
+  {
+    "building": "Expansion",
+    "building_code": "EXP",
+    "rooms": {
+      "1689": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47361,
+      -80.54624
+    ]
+  },
+  {
+    "building": "J.G. Hagey Hall of the Humanities",
+    "building_code": "HH",
+    "rooms": {
+      "1101": {
+        "slots": []
+      },
+      "1102": {
+        "slots": []
+      },
+      "1104": {
+        "slots": []
+      },
+      "1106": {
+        "slots": []
+      },
+      "1108": {
+        "slots": []
+      },
+      "119": {
+        "slots": []
+      },
+      "123": {
+        "slots": []
+      },
+      "124": {
+        "slots": []
+      },
+      "138": {
+        "slots": []
+      },
+      "139": {
+        "slots": []
+      },
+      "150": {
+        "slots": []
+      },
+      "2107": {
+        "slots": []
+      },
+      "227": {
+        "slots": []
+      },
+      "259": {
+        "slots": []
+      },
+      "334": {
+        "slots": []
+      },
+      "336": {
+        "slots": []
+      },
+      "344": {
+        "slots": []
+      },
+      "345": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.46792891,
+      -80.54165679
+    ]
+  },
+  {
+    "building": "J.R. Coutts Engineering Lecture Hall",
+    "building_code": "RCH",
+    "rooms": {
+      "101": {
+        "slots": []
+      },
+      "103": {
+        "slots": []
+      },
+      "105": {
+        "slots": []
+      },
+      "106": {
+        "slots": []
+      },
+      "109": {
+        "slots": []
+      },
+      "110": {
+        "slots": []
+      },
+      "112": {
+        "slots": []
+      },
+      "204": {
+        "slots": []
+      },
+      "205": {
+        "slots": []
+      },
+      "206": {
+        "slots": []
+      },
+      "207": {
+        "slots": []
+      },
+      "208": {
+        "slots": []
+      },
+      "209": {
+        "slots": []
+      },
+      "211": {
+        "slots": []
+      },
+      "212": {
+        "slots": []
+      },
+      "301": {
+        "slots": []
+      },
+      "302": {
+        "slots": []
+      },
+      "305": {
+        "slots": []
+      },
+      "306": {
+        "slots": []
+      },
+      "307": {
+        "slots": []
+      },
+      "308": {
+        "slots": []
+      },
+      "309": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47031155,
+      -80.54084139
+    ]
+  },
+  {
+    "building": "Mathematics & Computer Building",
+    "building_code": "MC",
+    "rooms": {
+      "1056": {
+        "slots": []
+      },
+      "1085": {
+        "slots": []
+      },
+      "2017": {
+        "slots": []
+      },
+      "2034": {
+        "slots": []
+      },
+      "2035": {
+        "slots": []
+      },
+      "2038": {
+        "slots": []
+      },
+      "2054": {
+        "slots": []
+      },
+      "2065": {
+        "slots": []
+      },
+      "2066": {
+        "slots": []
+      },
+      "4020": {
+        "slots": []
+      },
+      "4021": {
+        "slots": []
+      },
+      "4040": {
+        "slots": []
+      },
+      "4041": {
+        "slots": []
+      },
+      "4042": {
+        "slots": []
+      },
+      "4044": {
+        "slots": []
+      },
+      "4045": {
+        "slots": []
+      },
+      "4058": {
+        "slots": []
+      },
+      "4059": {
+        "slots": []
+      },
+      "4060": {
+        "slots": []
+      },
+      "4061": {
+        "slots": []
+      },
+      "4063": {
+        "slots": []
+      },
+      "4064": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47207511,
+      -80.54394739
+    ]
+  },
+  {
+    "building": "Mathematics 3",
+    "building_code": "M3",
+    "rooms": {
+      "1006": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47320425,
+      -80.54404983
+    ]
+  },
+  {
+    "building": "Mike & Ophelia Lazaridis Quantum-Nano Centre",
+    "building_code": "QNC",
+    "rooms": {
+      "1502": {
+        "slots": []
+      },
+      "1506": {
+        "slots": []
+      },
+      "1507": {
+        "slots": []
+      },
+      "2501": {
+        "slots": []
+      },
+      "2502": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.4712484,
+      -80.54419245
+    ]
+  },
+  {
+    "building": "Modern Languages",
+    "building_code": "ML",
+    "rooms": {
+      "242": {
+        "slots": []
+      },
+      "246": {
+        "slots": []
+      },
+      "311": {
+        "slots": []
+      },
+      "315": {
+        "slots": []
+      },
+      "349": {
+        "slots": []
+      },
+      "354": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.46909688,
+      -80.54287987
+    ]
+  },
+  {
+    "building": "Optometry",
+    "building_code": "OPT",
+    "rooms": {
+      "1129": {
+        "slots": []
+      },
+      "309": {
+        "slots": []
+      },
+      "347": {
+        "slots": []
+      },
+      "401": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47592517,
+      -80.5455299
+    ]
+  },
+  {
+    "building": "Physics",
+    "building_code": "PHY",
+    "rooms": {
+      "145": {
+        "slots": []
+      },
+      "150": {
+        "slots": []
+      },
+      "313": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47084805,
+      -80.54153806
+    ]
+  },
+  {
+    "building": "Psychology, Anthropology, Sociology",
+    "building_code": "PAS",
+    "rooms": {
+      "2083": {
+        "slots": []
+      },
+      "2084": {
+        "slots": []
+      },
+      "2085": {
+        "slots": []
+      },
+      "2086": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.46726305,
+      -80.54246097
+    ]
+  },
+  {
+    "building": "Science Teaching Complex",
+    "building_code": "STC",
+    "rooms": {
+      "0010": {
+        "slots": []
+      },
+      "0020": {
+        "slots": []
+      },
+      "0040": {
+        "slots": []
+      },
+      "0050": {
+        "slots": []
+      },
+      "0060": {
+        "slots": []
+      },
+      "1012": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.47064,
+      -80.54338
+    ]
+  },
+  {
+    "building": "St. Paul's University College",
+    "building_code": "STP",
+    "rooms": {
+      "105": {
+        "slots": []
+      }
+    },
+    "coords": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "building": "William G. Davis Computer Research Centre",
+    "building_code": "DC",
+    "rooms": {
+      "1350": {
+        "slots": []
+      },
+      "1351": {
+        "slots": []
+      }
+    },
+    "coords": [
+      43.472761,
+      -80.542164
+    ]
+  }
+]
