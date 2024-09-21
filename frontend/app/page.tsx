@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Apitest from "@/app/components/Apitest";
 import Classrooms from "@/components/classrooms";
 
 export default function Home() {
