@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-    --background: #000000;
+    --background: #0a0a0f;
     --foreground: #f4f4f5;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     :root {
         --background: #18181b;
         --foreground: #ededed;
     }
-} */
+}
 
 body {
     color: var(--foreground);
@@ -27,7 +27,14 @@ body {
 }
 
 @layer base {
-  :root {
+    :root {
         --radius: 0.5rem;
     }
+}
+
+#map-container {
+    height: 100%;
+    width: 100%;
+    background-color: lightgrey;
+    border-radius: 20px;
 }

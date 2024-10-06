@@ -7,14 +7,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 
-// import {
-//     HoverCard,
-//     HoverCardContent,
-//     HoverCardTrigger,
-// } from "@/components/ui/hover-card";
-
-interface dataFormat {
-    // Define the structure of the expected data here
+interface DataFormat {
     building: string;
     building_code: string;
     building_status: string;
@@ -33,11 +26,11 @@ function formatTime(timeString: string) {
         minute: "numeric" as "numeric",
         hour12: true,
     };
-    const time = new Date(`1970-01-01T${timeString}`); // Using a date to convert time
+    const time = new Date(`1970-01-01T${timeString}`);
     return new Intl.DateTimeFormat("en-US", options).format(time);
 }
 
-function formatStatus(status: string) {
+function statusLabel(status: string) {
     return (
         <div
             className={`rounded-lg px-2 py-1 text-sm w-[fit-content]
@@ -53,83 +46,55 @@ function formatStatus(status: string) {
 
 function statusIndicator(status: string) {
     return (
-        <div>
-            {/* <HoverCard>
-                <HoverCardTrigger>
-                    <div
-                        className={`absolute h-2 w-2 rounded-full top-[33%] 
-                        ${status === "unavailable" && "bg-red-400"}
-                        ${status === "available" && "bg-green-400"}
-                        ${status === "upcoming" && "bg-amber-400"}
-                        `}
-                    ></div>
-                </HoverCardTrigger>
-                <HoverCardContent
-                    className={`w-[fit-content] px-2 py-0.5 text-xs translate-x-16 border-none
-                        ${
-                            status === "unavailable" &&
-                            "bg-red-700/20 text-red-300/80"
-                        }
-                        ${
-                            status === "available" &&
-                            "bg-green-800/20 text-green-300/90"
-                        }
-                        ${
-                            status === "upcoming" &&
-                            "bg-amber-800/20 text-amber-300/90"
-                        }`}
-                >
-                    {status}
-                </HoverCardContent>
-            </HoverCard> */}
-            <div
-                className={`h-2 w-2 rounded-full 
+        <div
+            className={`h-2 w-2 rounded-full 
                     ${status === "unavailable" && "bg-red-400"}
                     ${status === "available" && "bg-green-400"}
                     ${status === "upcoming" && "bg-amber-400"}
                         `}
-            ></div>
-        </div>
+        ></div>
     );
 }
 
-export default function Classrooms() {
-    const [classrooms, setClassrooms] = useState<dataFormat[]>([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch("/api/open-classrooms");
-            const data = await res.json();
-            // console.log(data); // Log the data to inspect its structure
-
-            setClassrooms(data);
-        };
-
-        fetchData();
-    }, []);
-
+export default function Left({
+    data,
+    activeBuilding,
+    setActiveBuilding,
+}: {
+    data: DataFormat[];
+    activeBuilding: string | null;
+    setActiveBuilding: (building: string) => void;
+}) {
     return (
         <div className="px-8">
-            <Accordion type="single" collapsible className="w-full">
-                {classrooms.map((classroom) => (
+            <Accordion
+                type="single"
+                collapsible
+                className="w-full"
+                value={activeBuilding || ""}
+                onValueChange={(val) => setActiveBuilding(val)}
+            >
+                {data.map((building) => (
                     <AccordionItem
-                        id={classroom.building_code}
-                        value={classroom.building_code}
+                        id={building.building_code}
+                        value={building.building_code}
+                        key={building.building_code}
+                        className=""
                     >
                         <AccordionTrigger>
                             <div className="flex justify-between w-[95%] text-left text-lg group items-center">
                                 <div className="group-hover:underline underline-offset-8 pr-2">
-                                    {classroom.building_code} -{" "}
-                                    {classroom.building}
+                                    {building.building_code} -{" "}
+                                    {building.building}
                                 </div>
                                 <div className="">
-                                    {formatStatus(classroom.building_status)}
+                                    {statusLabel(building.building_status)}
                                 </div>
                             </div>
                         </AccordionTrigger>
-                        <AccordionContent className="divide-y divide-zinc-500">
-                            {classroom.rooms &&
-                                Object.entries(classroom.rooms).map(
+                        <AccordionContent className="divide-y divide-dashed divide-zinc-600">
+                            {building.rooms &&
+                                Object.entries(building.rooms).map(
                                     ([roomNumber, room]) => {
                                         return (
                                             <div
@@ -138,9 +103,7 @@ export default function Classrooms() {
                                             >
                                                 <div className="flex gap-4 items-center h-[fit-content]">
                                                     <div className="w-18">
-                                                        {
-                                                            classroom.building_code
-                                                        }{" "}
+                                                        {building.building_code}{" "}
                                                         {roomNumber}
                                                     </div>
                                                     <div className="relative">

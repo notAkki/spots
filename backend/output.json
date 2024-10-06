@@ -4,28 +4,116 @@
     "building_code": "AL",
     "rooms": {
       "105": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:50:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:00:00"
+          },
+          {
+            "StartTime": "21:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "113": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:00:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "116": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "124": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          }
+        ]
       },
       "208": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "09:30:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "209": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "210": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "11:30:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "211": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -38,7 +126,16 @@
     "building_code": "B1",
     "rooms": {
       "271": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -51,7 +148,12 @@
     "building_code": "CPH",
     "rooms": {
       "1346": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "19:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -64,7 +166,20 @@
     "building_code": "EIT",
     "rooms": {
       "1015": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -77,34 +192,128 @@
     "building_code": "DWE",
     "rooms": {
       "1501": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1502": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "13:20:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1515": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "2527": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "09:30:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "3516": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "3517": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "18:00:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "3518": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "11:50:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "3519": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "3522": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:50:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "3522A": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "18:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -117,10 +326,32 @@
     "building_code": "E2",
     "rooms": {
       "1732": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "10:20:00",
+            "EndTime": "11:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1736": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -133,13 +364,44 @@
     "building_code": "EV1",
     "rooms": {
       "132": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "225": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "11:30:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "350": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "10:20:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:30:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -152,7 +414,20 @@
     "building_code": "EV2",
     "rooms": {
       "2002": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:00:00"
+          },
+          {
+            "StartTime": "21:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -165,22 +440,72 @@
     "building_code": "EV3",
     "rooms": {
       "1408": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "17:30:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "3406": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "3408": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "17:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "3412": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "10:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4408": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "17:30:00"
+          },
+          {
+            "StartTime": "19:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4412": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "19:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -193,7 +518,20 @@
     "building_code": "EXP",
     "rooms": {
       "1689": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "10:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "18:30:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -206,58 +544,232 @@
     "building_code": "HH",
     "rooms": {
       "1101": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1102": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "17:30:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1104": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:30:00"
+          },
+          {
+            "StartTime": "21:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1106": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1108": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "17:30:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "119": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "123": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "124": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "138": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:00:00"
+          },
+          {
+            "StartTime": "19:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "139": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "17:00:00"
+          }
+        ]
       },
       "150": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "17:00:00"
+          }
+        ]
       },
       "2107": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "227": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "259": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "11:30:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "334": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:30:00"
+          },
+          {
+            "StartTime": "21:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "336": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "344": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "345": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "11:30:00"
+          },
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -270,70 +782,304 @@
     "building_code": "RCH",
     "rooms": {
       "101": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "103": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "105": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "106": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "109": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "18:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "110": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "09:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "112": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "204": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:50:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:00:00"
+          },
+          {
+            "StartTime": "19:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "205": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "11:30:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "16:30:00"
+          },
+          {
+            "StartTime": "18:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "206": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "18:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "207": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "09:30:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "208": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "209": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "13:20:00",
+            "EndTime": "16:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "211": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:50:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "212": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "301": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "18:20:00",
+            "EndTime": "19:00:00"
+          }
+        ]
       },
       "302": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "305": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "306": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "307": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "308": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "15:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "309": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:50:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -346,70 +1092,276 @@
     "building_code": "MC",
     "rooms": {
       "1056": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1085": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "16:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "2017": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "16:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:30:00"
+          },
+          {
+            "StartTime": "21:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "2034": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:30:00"
+          }
+        ]
       },
       "2035": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "09:30:00"
+          },
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "13:20:00",
+            "EndTime": "18:30:00"
+          }
+        ]
       },
       "2038": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "10:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "18:30:00"
+          }
+        ]
       },
       "2054": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "18:30:00"
+          }
+        ]
       },
       "2065": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "2066": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4020": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4021": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "16:30:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4040": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "18:00:00"
+          },
+          {
+            "StartTime": "20:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4041": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4042": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "10:20:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "17:00:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4044": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4045": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4058": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "16:30:00"
+          },
+          {
+            "StartTime": "20:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4059": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4060": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "16:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "19:00:00"
+          }
+        ]
       },
       "4061": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "16:30:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4063": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "19:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "4064": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "19:00:00"
+          },
+          {
+            "StartTime": "21:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -422,7 +1374,16 @@
     "building_code": "M3",
     "rooms": {
       "1006": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "09:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -435,19 +1396,72 @@
     "building_code": "QNC",
     "rooms": {
       "1502": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "17:30:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1506": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1507": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "2501": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "2502": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -460,22 +1474,88 @@
     "building_code": "ML",
     "rooms": {
       "242": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "246": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "311": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "315": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "349": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "16:00:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "18:30:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "354": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "11:30:00"
+          },
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "18:30:00"
+          },
+          {
+            "StartTime": "21:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -488,16 +1568,56 @@
     "building_code": "OPT",
     "rooms": {
       "1129": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "309": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "18:00:00"
+          },
+          {
+            "StartTime": "20:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "347": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "09:30:00"
+          },
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "401": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -510,13 +1630,40 @@
     "building_code": "PHY",
     "rooms": {
       "145": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "11:20:00",
+            "EndTime": "14:30:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "150": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "313": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "16:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -529,16 +1676,44 @@
     "building_code": "PAS",
     "rooms": {
       "2083": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "14:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "2084": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "13:00:00"
+          },
+          {
+            "StartTime": "14:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "2085": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "2086": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "10:20:00",
+            "EndTime": "12:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -551,22 +1726,80 @@
     "building_code": "STC",
     "rooms": {
       "0010": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "09:30:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "0020": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "18:00:00"
+          },
+          {
+            "StartTime": "21:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "0040": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "0050": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:30:00"
+          },
+          {
+            "StartTime": "15:50:00",
+            "EndTime": "18:30:00"
+          },
+          {
+            "StartTime": "19:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "0060": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "12:20:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "15:20:00",
+            "EndTime": "16:30:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1012": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -579,7 +1812,12 @@
     "building_code": "STP",
     "rooms": {
       "105": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
@@ -592,10 +1830,36 @@
     "building_code": "DC",
     "rooms": {
       "1350": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "09:20:00",
+            "EndTime": "10:00:00"
+          },
+          {
+            "StartTime": "16:20:00",
+            "EndTime": "17:00:00"
+          },
+          {
+            "StartTime": "18:50:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       },
       "1351": {
-        "slots": []
+        "slots": [
+          {
+            "StartTime": "08:30:00",
+            "EndTime": "09:30:00"
+          },
+          {
+            "StartTime": "12:50:00",
+            "EndTime": "13:30:00"
+          },
+          {
+            "StartTime": "17:20:00",
+            "EndTime": "22:00:00"
+          }
+        ]
       }
     },
     "coords": [
