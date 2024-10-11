@@ -2,6 +2,8 @@
 
 **Spots** is a web application designed to help students at the University of Waterloo find open classrooms for studying. When libraries and other common study areas are full, students can use Spots to locate available classrooms in real-time, offering more options for quiet and productive study spaces on campus.
 
+![alt text](spotsImage.png)
+
 ## Features
 
 -   Displays open classrooms across the University of Waterloo campus.
