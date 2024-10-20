@@ -3,6 +3,7 @@ import React from "react";
 import { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import Image from "next/image";
 
 interface dataFormat {
     building: string;

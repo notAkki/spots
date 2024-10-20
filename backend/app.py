@@ -7,15 +7,14 @@ import math
 app = Flask(__name__)
 
 def haversine(lat1, lon1, lat2, lon2):
-    R = 6371  # Radius of the Earth in kilometers
+    R = 6371
     dlat = math.radians(lat2 - lat1)
     dlon = math.radians(lon2 - lon1)
     a = math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2) ** 2
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-    return R * c  # Distance in kilometers
+    return R * c 
 
 def get_slot_status(current_time, start_time_str, end_time_str):
-    # Parse start and end times
     start_time = datetime.strptime(start_time_str, "%H:%M:%S").time()
     end_time = datetime.strptime(end_time_str, "%H:%M:%S").time()
 
@@ -46,14 +45,13 @@ def get_open_classrooms():
         if user_location is None:
             return jsonify({"error": "No data provided"}), 400
 
-        # Check if lat and lng are present in the request
         user_lat = user_location.get('lat')
         user_lng = user_location.get('lng')
 
         if user_lat is None or user_lng is None:
             return jsonify({"error": "Invalid location data. 'lat' and 'lng' are required."}), 400
         
-    print(f"Received user location: lat = {user_lat}, lng = {user_lng}")
+    # print(f"Received user location: lat = {user_lat}, lng = {user_lng}")
 
     r = requests.get('https://portalapi2.uwaterloo.ca/v2/map/OpenClassrooms')
     data = r.json()
@@ -84,7 +82,6 @@ def get_open_classrooms():
                     start_time = slot['StartTime']
                     end_time = slot['EndTime']
 
-                    # Get the status for each slot
                     status = get_slot_status(current_time, start_time, end_time)
 
                     if building_status != "available" and status == "available":
@@ -120,4 +117,4 @@ def get_open_classrooms():
     return jsonify(building_info_list)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)

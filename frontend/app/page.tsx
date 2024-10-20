@@ -5,6 +5,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import Map from "@/components/Map";
 import { LayoutListIcon } from "lucide-react";
 import Loading from "@/components/Loading";
+import Image from "next/image";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
 interface dataFormat {
     building: string;
@@ -111,28 +114,34 @@ export default function Home() {
 
     return (
         <main className="flex flex-col sm:flex-row sm:gap-4 h-screen">
-            <div className="py-4 sm:p-0 h-[40vh] sm:h-screen order-last sm:order-first overflow-hidden">
-                {/* <div className="flex justify-between w-full px-8">
-                    <div className="flex items-center gap-3">
-                        <div className="h-2 w-2 rounded-full bg-red-400"></div>
-                        <div className="rounded-lg px-2 py-1 text-sm w-[fit-content] bg-red-700/20 text-red-300/80">
-                            unavailable
-                        </div>
+            <div className="basis-2/5 sm:h-full order-last sm:order-first py-4 sm:px-0 sm:py-2 overflow-hidden sm:flex sm:flex-col">
+                <div className="w-full h-20 pl-8 pr-4 hidden sm:flex sm:justify-between items-center">
+                    <Image
+                        src={"/logo.png"}
+                        width={200}
+                        height={200}
+                        alt="Logo"
+                    />
+                    <Alert className="h-fit text-pretty w-40">
+                        <AlertDescription>
+                            Availability may differ during exam period
+                        </AlertDescription>
+                    </Alert>
+                </div>
+                <ScrollArea className="h-full">
+                    <div className="w-full h-20 pl-8 pr-4 flex sm:hidden justify-between items-center">
+                        <Image
+                            src={"/logo.png"}
+                            width={180}
+                            height={200}
+                            alt="Logo"
+                        />
+                        <Alert className="h-fit text-pretty w-40">
+                            <AlertDescription>
+                                Availability may differ during exam period
+                            </AlertDescription>
+                        </Alert>
                     </div>
-                    <div className="flex items-center gap-3">
-                        <div className="h-2 w-2 rounded-full bg-amber-400"></div>
-                        <div className="rounded-lg px-2 py-1 text-sm w-[fit-content] bg-amber-800/20 text-amber-300/90">
-                            opening soon
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                        <div className="rounded-lg px-2 py-1 text-sm w-[fit-content] bg-green-800/20 text-green-300/90">
-                            open now
-                        </div>
-                    </div>
-                </div> */}
-                <ScrollArea className="h-full basis-2/5 sm:h-[95%] sm:mt-[2.5%]">
                     <Left
                         data={data}
                         activeBuilding={activeBuilding}
