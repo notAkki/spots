@@ -3,11 +3,9 @@ import Left from "@/components/Left";
 import { useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Map from "@/components/Map";
-import { LayoutListIcon } from "lucide-react";
 import Loading from "@/components/Loading";
 import Image from "next/image";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface dataFormat {
     building: string;

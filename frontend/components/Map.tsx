@@ -3,7 +3,6 @@ import React from "react";
 import { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Image from "next/image";
 
 interface dataFormat {
     building: string;
@@ -116,7 +115,7 @@ export default function Map({
                 mapRef.current.remove();
             }
         };
-    }, [data]);
+    }, []);
 
     return (
         <div className="h-[60vh] sm:w-full sm:h-full relative bg-red-500/0 rounded-[20px] p-2 sm:p-0">
