@@ -25,8 +25,15 @@ def get_slot_status(current_time, start_time_str, end_time_str):
         return "upcoming"
     elif start_time <= current_time <= end_time:
         return "available"
+    elif current_time > end_time:
+        return "passed"
     else:
         return "unavailable"
+
+@app.route('/api/test', methods=['GET'])
+def test():
+    return jsonify({"message": "Test route is working!"})
+
 
 @app.route('/api/open-classrooms', methods=['GET', 'POST'])
 def get_open_classrooms():
@@ -56,6 +63,9 @@ def get_open_classrooms():
     r = requests.get('https://portalapi2.uwaterloo.ca/v2/map/OpenClassrooms')
     data = r.json()
 
+    # print(r.status_code)
+    # print (data)
+
     current_time = datetime.now().time()
 
     building_info_list = []
@@ -74,15 +84,19 @@ def get_open_classrooms():
             room_number = room['roomNumber']
             schedule = room['Schedule']
 
+            # print (room_number + " " + str(schedule))
+
             if schedule:
                 slots = schedule[0]['Slots'] if schedule else []
-                
                 slots_with_status = []
+
                 for slot in slots:
                     start_time = slot['StartTime']
                     end_time = slot['EndTime']
 
                     status = get_slot_status(current_time, start_time, end_time)
+
+                    # print (room_number + " " + start_time + " " + end_time + " " + status)
 
                     if building_status != "available" and status == "available":
                         building_status = "available"
@@ -110,11 +124,13 @@ def get_open_classrooms():
             "distance": haversine(user_lat, user_lng, building_coords[1], building_coords[0]) if user_lat  != 0 and user_lng != 0 else 0
         }
 
-        building_info_list.append(building_info)
+        if rooms:
+            building_info_list.append(building_info)
     
     if user_lat != 0 and user_lng != 0:
         building_info_list = sorted(building_info_list, key=lambda x: x['distance'])
+    
     return jsonify(building_info_list)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)

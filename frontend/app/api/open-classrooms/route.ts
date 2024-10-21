@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
         // Send the user location to the backend
         const response = await fetch(
-            "http://localhost:5000/api/open-classrooms",
+            "https://spots-backend-1036276518870.us-central1.run.app/api/open-classrooms",
             {
                 method: "POST",
                 headers: {
@@ -54,7 +54,7 @@ export async function GET() {
     try {
         // Fetch the default data without location
         const response = await fetch(
-            "http://localhost:5000/api/open-classrooms",
+            "https://spots-backend-1036276518870.us-central1.run.app/api/open-classrooms",
             {
                 method: "GET",
                 cache: "no-cache",

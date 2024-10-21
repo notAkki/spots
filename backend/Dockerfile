@@ -1,9 +1,14 @@
 # Use the official Python image as a parent image
 FROM python:3.11-slim
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1  
-ENV PYTHONUNBUFFERED=1         
+# Set the timezone environment variable
+ENV TZ=America/Toronto
+
+# Install tzdata package for timezone data
+RUN apt-get update && \
+    apt-get install -y tzdata && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    echo $TZ > /etc/timezone    
 
 # Set the working directory in the container
 WORKDIR /app
@@ -18,7 +23,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the port that your app runs on
-EXPOSE 5000
+EXPOSE 8080
 
 # Specify the command to run your app
 CMD ["python", "app.py"]
