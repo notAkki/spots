@@ -34,6 +34,8 @@ export default function Map({
     const [zoom, setZoom] = useState(16.25);
     const [pitch, setPitch] = useState(52);
 
+    const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
+
     function getColorByStatus(status: string) {
         switch (status) {
             case "available":
@@ -48,9 +50,12 @@ export default function Map({
     }
 
     useEffect(() => {
-        mapboxgl.accessToken =
-            "pk.eyJ1Ijoibm90YWtraSIsImEiOiJjbTFtejY5MXAwcml1MmxvZGowZHF4eXltIn0.xfh20iSQcvt7lOhxDnliyg";
-        ("pk.eyJ1Ijoibm90YWtraSIsImEiOiJjbTFtejY5MXAwcml1MmxvZGowZHF4eXltIn0.xfh20iSQcvt7lOhxDnliyg");
+        if (mapboxToken) {
+            mapboxgl.accessToken = mapboxToken;
+        } else {
+            console.error("Mapbox token is not defined");
+        }
+        mapboxToken;
         mapRef.current = new mapboxgl.Map({
             style: "mapbox://styles/notakki/cm1o3v5kr00bl01pd2k7tho6i",
             container: mapContainerRef.current as HTMLElement,
