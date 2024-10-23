@@ -1,0 +1,19 @@
+services:
+  frontend:
+    ports:
+      - 3000:3000
+    command: npm run dev
+    volumes:
+      - ./frontend/app:/app/app
+      - ./frontend/components:/app/components
+      - ./frontend/lib:/app/lib
+      - ./frontend/public:/app/public
+      - ./frontend/package.json:/app/package.json
+
+  backend:
+    environment:
+      - FLASK_DEBUG=1
+    volumes:
+      - ./backend/spots:/app/spots
+    ports:
+      - 8080:8080

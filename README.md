@@ -32,3 +32,10 @@
 -   **User Authentication**: Allow users to log in and save favorite classrooms.
 -   **Notifications**: Send alerts when a classroom is available or about to close.
 -   **Schedule Integration**: Connect with class schedules to avoid occupied classrooms.
+
+## Local Development
+
+1. Install Docker and Docker Compose.
+2. Run `make build up-dev` to start the frontend and backend services.
+
+The frontend is containerized and has volumes mounted for hot reloading. For a production build, run `make build up`.
