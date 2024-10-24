@@ -1,5 +1,6 @@
 import math
 from datetime import datetime, time
+import re
 
 
 def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -33,3 +34,10 @@ def get_slot_status(current_time: time, start_time_str: str, end_time_str: str) 
         return "passed"
     else:
         return "unavailable"
+
+
+def get_job_id(message: str) -> str | None:
+    match = re.search(r"Job queued for scraping: (\w+)", message)
+    if match:
+        return match.group(1)
+    return None

@@ -1,3 +1,4 @@
 {
-    "cSpell.words": ["dlat", "dlon"]
+  "cSpell.words": ["dlat", "dlon"],
+  "discord.enabled": true
 }

@@ -14,3 +14,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    networks:
+      - web
+
+networks:
+  web:
