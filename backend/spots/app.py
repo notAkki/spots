@@ -4,7 +4,7 @@ import logging
 
 
 from spots.models import Element
-from spots.scraping import scrape, get_element_from_parent
+from spots.scraping import scrape, sxpath
 
 
 logging.basicConfig(level=logging.INFO)
@@ -55,9 +55,35 @@ async def get_library_study_rooms():
 
     LOG.info(f"Sterne slots: {sterne_slots}")
 
-    a_tags = [get_element_from_parent(parent, ".//a") for parent in sterne_slots]
+    STERNE_SLOT_TO_ROOM_MAP = {}
 
-    LOG.info(f"A tags: {a_tags}")
+    if sterne_slots:
+        for sterne_slot in sterne_slots:
+            LOG.info(f"Sterne slot: {sterne_slot}")
+
+            available_slots = sxpath(sterne_slot, ".//a")
+            LOG.info(f"Available slots: {available_slots}")
+
+            if available_slots:
+                first_available_slot = available_slots[0]
+                tag_title = first_available_slot.attrib.get("title")
+
+                LOG.info(f"Tag title: {tag_title}")
+
+                if tag_title and "available" in tag_title.lower():
+                    STERNE_SLOT_TO_ROOM_MAP[sterne_slot] = "available"
+                else:
+                    STERNE_SLOT_TO_ROOM_MAP[sterne_slot] = "unavailable"
+
+                LOG.info(f"Sterne slot to room map: {STERNE_SLOT_TO_ROOM_MAP}")
+
+        return jsonify(
+            {
+                "sterne_rooms": sterne_rooms,
+                "lister_rooms": lister_rooms,
+                "sterne_slot_to_room_map": STERNE_SLOT_TO_ROOM_MAP,
+            }
+        )
 
     return jsonify(
         {

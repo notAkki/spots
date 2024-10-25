@@ -1,6 +1,7 @@
 import logging
 from bs4 import BeautifulSoup
 from lxml import etree
+from lxml.etree import _Element
 from selenium import webdriver
 from fake_useragent import UserAgent
 from selenium.webdriver.support import expected_conditions as EC
@@ -9,9 +10,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 import selenium.webdriver
 from typing import Any
 
-from spots.models import Element, CapturedElement
+from spots.models import Element, CapturedElement, HtmlElement
 
 LOG = logging.getLogger(__name__)
+
+
+def sxpath(context: _Element, xpath: str) -> list[HtmlElement]:
+    return context.xpath(xpath)  # type: ignore [reportReturnType]
 
 
 def create_driver():
@@ -33,7 +38,7 @@ def collect_scraped_elements(page: str, xpaths: list[Element]):
     elements: dict[str, list[CapturedElement]] = dict()
 
     for elem in xpaths:
-        el = root.xpath(elem.xpath)
+        el = sxpath(root, elem.xpath)
 
         if elem.return_html:  # Check if the flag is set to return HTML
             # Capture the actual HTML element
@@ -53,10 +58,6 @@ def collect_scraped_elements(page: str, xpaths: list[Element]):
             elements[elem.name] = [captured_element]
 
     return elements
-
-
-def get_element_from_parent(parent: Any, xpath: str):
-    return parent.xpath(xpath)
 
 
 def scrape(url: str, xpaths: list[Element]):

@@ -1,6 +1,10 @@
 # PDM
 import pydantic
 from typing import Any
+from lxml.etree import _Element
+
+
+class HtmlElement(_Element): ...
 
 
 class Element(pydantic.BaseModel):
@@ -14,4 +18,7 @@ class CapturedElement(pydantic.BaseModel):
     xpath: str
     text: str
     name: str
-    html: Any | None = None
+    html: pydantic.SkipValidation[list[HtmlElement] | None] = None
+
+    class Config:
+        arbitrary_types_allowed = True  # Allow arbitrary types
