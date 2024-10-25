@@ -1,11 +1,12 @@
+from tarfile import fully_trusted_filter
 from flask import Flask, jsonify
 import os
 import logging
 
-
+from spots.constants import STERNE_DATA_MAP, LISTER_DATA_MAP
 from spots.models import Element
-from spots.scraping import scrape, sxpath
-
+from spots.scraping import scrape
+from spots.helpers import get_available_slots
 
 logging.basicConfig(level=logging.INFO)
 LOG = logging.getLogger(__name__)
@@ -39,6 +40,11 @@ async def get_library_study_rooms():
                 xpath="//div[@id='s-lc-17033']//td[@class='fc-timeline-lane fc-resource']",
                 return_html=True,
             ),
+            Element(
+                name="lister_slots",
+                xpath="//div[@id='s-lc-17032']//td[@class='fc-timeline-lane fc-resource']",
+                return_html=True,
+            ),
         ],
     )
 
@@ -52,45 +58,19 @@ async def get_library_study_rooms():
     lister_rooms = [r.split(",") for r in lister_room_groups]
 
     sterne_slots = elements["sterne_slots"][0].html
+    lister_slots = elements["lister_slots"][0].html
 
     LOG.info(f"Sterne slots: {sterne_slots}")
 
-    STERNE_SLOT_TO_ROOM_MAP = {}
-
-    if sterne_slots:
-        for sterne_slot in sterne_slots:
-            LOG.info(f"Sterne slot: {sterne_slot}")
-
-            available_slots = sxpath(sterne_slot, ".//a")
-            LOG.info(f"Available slots: {available_slots}")
-
-            if available_slots:
-                first_available_slot = available_slots[0]
-                tag_title = first_available_slot.attrib.get("title")
-
-                LOG.info(f"Tag title: {tag_title}")
-
-                if tag_title and "available" in tag_title.lower():
-                    STERNE_SLOT_TO_ROOM_MAP[sterne_slot] = "available"
-                else:
-                    STERNE_SLOT_TO_ROOM_MAP[sterne_slot] = "unavailable"
-
-                LOG.info(f"Sterne slot to room map: {STERNE_SLOT_TO_ROOM_MAP}")
-
-        return jsonify(
-            {
-                "sterne_rooms": sterne_rooms,
-                "lister_rooms": lister_rooms,
-                "sterne_slot_to_room_map": STERNE_SLOT_TO_ROOM_MAP,
-            }
-        )
-
-    return jsonify(
-        {
-            "sterne_rooms": sterne_rooms,
-            "lister_rooms": lister_rooms,
-        }
+    sterne_rooms_data = (
+        get_available_slots(sterne_slots, STERNE_DATA_MAP) if sterne_slots else []
     )
+    lister_rooms_data = (
+        get_available_slots(lister_slots, LISTER_DATA_MAP) if lister_slots else {}
+    )
+
+    full_rooms_data = lister_rooms_data + sterne_rooms_data
+    return jsonify(full_rooms_data)
 
 
 if __name__ == "__main__":
