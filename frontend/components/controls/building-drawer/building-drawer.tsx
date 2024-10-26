@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DRAWER_STATUS_TO_COLOR, formatTime, type MapData } from "@/lib";
+import { formatTime, roundDistanceToHundreds, type MapData } from "@/lib";
 
 import { clsx } from "clsx";
 import classes from "./building-drawer.module.css";
@@ -67,8 +67,12 @@ export const BuildingDrawer = ({
               <div className="flex justify-between w-[95%] text-left text-lg group items-center">
                 <div className="group-hover:underline underline-offset-8 pr-2">
                   {building.building_code} - {building.building}
+                  <div className={classes.distance}>
+                    {roundDistanceToHundreds(building.distance)}{" "}
+                    {building.distance_unit}
+                  </div>
                 </div>
-                <div className="">{statusLabel(building.building_status)}</div>
+                <div>{statusLabel(building.building_status)}</div>
               </div>
             </AccordionTrigger>
             <AccordionContent className="divide-y divide-dashed divide-zinc-600">
@@ -81,7 +85,9 @@ export const BuildingDrawer = ({
                     >
                       <div className="flex gap-4 items-center h-[fit-content]">
                         <div className="w-18">
-                          {building.building_code} {room.roomNumber}
+                          <div>
+                            {building.building_code} {room.roomNumber}
+                          </div>
                         </div>
                         <div className="relative">
                           {room.slots && room.slots.length > 0 ? (

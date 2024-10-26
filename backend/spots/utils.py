@@ -1,5 +1,6 @@
 import math
 from datetime import datetime, time, timedelta
+from typing import Literal
 
 
 def convert_to_24_hour_format(time_str: str, add_hours: int | float = 0) -> str:
@@ -9,8 +10,14 @@ def convert_to_24_hour_format(time_str: str, add_hours: int | float = 0) -> str:
     return time_obj.strftime("%H:%M:%S")
 
 
-def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    R = 6371
+def haversine(
+    lat1: float, lon1: float, lat2: float, lon2: float, unit: Literal["mi", "km"] = "mi"
+) -> float:
+    r = 3958.756
+
+    if unit == "km":
+        r = 6371
+
     dlat = math.radians(lat2 - lat1)
     dlon = math.radians(lon2 - lon1)
     a = (
@@ -20,7 +27,7 @@ def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
         * math.sin(dlon / 2) ** 2
     )
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-    return R * c
+    return r * c
 
 
 def get_slot_status(current_time: time, start_time_str: str, end_time_str: str) -> str:

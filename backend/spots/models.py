@@ -1,4 +1,5 @@
 # PDM
+from typing import Literal
 from pydantic import BaseModel
 
 
@@ -27,6 +28,7 @@ class DataFormat(BaseModel):
     rooms: list[Room]
     coords: tuple[float, float]
     distance: float
+    distance_unit: Literal["mi", "km"] = "mi"
 
 
 class RoomDataMap(BaseModel):

@@ -24,3 +24,8 @@
   background-color: rgb(146 64 14 / 0.3);
   color: rgb(252 211 77 / 0.9);
 }
+
+.distance {
+  font-size: 0.825rem;
+  color: lightgray;
+}

@@ -5,6 +5,7 @@ export type MapData = {
   rooms: Record<string, Room>;
   coords: [number, number];
   distance: number;
+  distance_unit: string;
 };
 
 export type Slot = {

@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Map as MapComponent } from "@/components/controls/map/map";
 import { Loading } from "@/components/ui";
 import { BuildingDrawer } from "@/components/controls";
@@ -74,27 +73,30 @@ export default function OpenSpots() {
       <div className="basis-2/5 sm:h-full order-last sm:order-first py-4 sm:px-0 sm:py-2 overflow-hidden sm:flex sm:flex-col">
         <div className="w-full h-20 pl-8 pr-4 hidden sm:flex sm:justify-between items-center">
           <Image src={"/logo.png"} width={200} height={200} alt="Logo" />
-          <Alert className="h-fit text-pretty w-40">
-            <AlertDescription>
-              Availability may differ during exam period
-            </AlertDescription>
-          </Alert>
         </div>
-        <ScrollArea className="h-full">
-          <div className="w-full h-20 pl-8 pr-4 flex sm:hidden justify-between items-center">
-            <Image src={"/logo.png"} width={180} height={200} alt="Logo" />
-            <Alert className="h-fit text-pretty w-40">
-              <AlertDescription>
-                Availability may differ during exam period
-              </AlertDescription>
-            </Alert>
+        <ScrollArea id="scroll-area" className="h-full">
+          <div className="flex flex-col justify-between h-full">
+            <div id="building-drawer-container">
+              <div className="w-full h-20 pl-8 pr-4 flex sm:hidden justify-between items-center">
+                <Image src={"/logo.png"} width={180} height={200} alt="Logo" />
+              </div>
+              <BuildingDrawer
+                data={data}
+                activeBuilding={activeBuilding}
+                setActiveBuilding={setActiveBuilding}
+              />
+            </div>
           </div>
-          <BuildingDrawer
-            data={data}
-            activeBuilding={activeBuilding}
-            setActiveBuilding={setActiveBuilding}
-          />
         </ScrollArea>
+        <div className="github-link align-middle text-center flex justify-center items-center gap-2 text-gray-400">
+          <Image
+            src={"/images/github.png"}
+            width={20}
+            height={20}
+            alt="Github"
+          />
+          <a href="https://github.com/jaypyles/spots">Github</a>
+        </div>
       </div>
       <div className="h-[60vh] basis-3/5 sm:h-screen">
         <MapComponent

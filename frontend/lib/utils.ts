@@ -20,3 +20,7 @@ export function formatTime(timeString: string) {
 
   return new Intl.DateTimeFormat("en-US", options).format(time);
 }
+
+export function roundDistanceToHundreds(distance: number) {
+  return Math.round(distance * 100) / 100;
+}
