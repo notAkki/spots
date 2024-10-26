@@ -1,6 +1,5 @@
 import math
 from datetime import datetime, time, timedelta
-import re
 
 
 def convert_to_24_hour_format(time_str: str, add_hours: int | float = 0) -> str:
@@ -41,10 +40,3 @@ def get_slot_status(current_time: time, start_time_str: str, end_time_str: str) 
         return "passed"
     else:
         return "unavailable"
-
-
-def get_job_id(message: str) -> str | None:
-    match = re.search(r"Job queued for scraping: (\w+)", message)
-    if match:
-        return match.group(1)
-    return None

@@ -1,7 +1,8 @@
 # pyright: reportUnknownMemberType=false
 
+from typing import Any
 import logging
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import os
 from flask_cors import CORS
 from selenium.webdriver.support import expected_conditions as EC
@@ -25,6 +26,17 @@ def healthcheck():
 
 @app.route("/api/library-study-rooms", methods=["GET", "POST"])
 def get_library_study_rooms():
+    user_lat = 0
+    user_lng = 0
+
+    if request.method == "POST":
+        data: dict[str, Any] | None = request.json
+        if data:
+            user_lat: float = data.get("lat", 0)
+            user_lng: float = data.get("lng", 0)
+
+    LOG.info(f"User lat: {user_lat}, User lng: {user_lng}")
+
     driver = create_driver()
     driver.implicitly_wait(10)
 
@@ -37,9 +49,13 @@ def get_library_study_rooms():
         )
 
         # Extract data for Sterne Library
-        sterne_data = extract_room_data(driver, "s-lc-17033", STERNE_DATA_MAP)
+        sterne_data = extract_room_data(
+            driver, "s-lc-17033", STERNE_DATA_MAP, user_lat, user_lng
+        )
         # Extract data for Lister Building
-        lister_data = extract_room_data(driver, "s-lc-17032", LISTER_DATA_MAP)
+        lister_data = extract_room_data(
+            driver, "s-lc-17032", LISTER_DATA_MAP, user_lat, user_lng
+        )
 
         full_rooms_data = [sterne_data, lister_data]
 

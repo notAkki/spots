@@ -4,7 +4,7 @@ import logging
 from typing import Any
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.webdriver import WebDriver
-from spots.utils import convert_to_24_hour_format
+from spots.utils import convert_to_24_hour_format, haversine
 from spots.models import DataFormat, RoomDataMap, Room, RoomSlot
 
 
@@ -12,7 +12,11 @@ LOG = logging.getLogger(__name__)
 
 
 def extract_room_data(
-    driver: WebDriver, building_div_id: str, data_map: RoomDataMap
+    driver: WebDriver,
+    building_div_id: str,
+    data_map: RoomDataMap,
+    user_lat: float = 0,
+    user_lng: float = 0,
 ) -> DataFormat | dict[str, Any]:
     rooms: list[Room] = []
 
@@ -70,7 +74,11 @@ def extract_room_data(
         building_status=data_map.building_status,
         coords=data_map.coords,
         rooms=rooms,
-        distance=0,
+        distance=(
+            haversine(user_lat, user_lng, data_map.coords[1], data_map.coords[0])
+            if user_lat != 0 and user_lng != 0
+            else 0
+        ),
     )
 
     return building_data.model_dump()
