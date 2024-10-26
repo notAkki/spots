@@ -1,4 +1,7 @@
+# pyright: reportUnknownMemberType=false
+
 import logging
+from re import A
 from flask import Flask, jsonify
 import os
 from flask_cors import CORS
@@ -52,12 +55,6 @@ def extract_room_data(
     driver: WebDriver, building_div_id: str, data_map: dict[str, str]
 ) -> dict[str, str] | None:
     rooms = []
-    resource_rows = driver.find_elements(
-        By.XPATH,
-        f"//div[@id='{building_div_id}']//table[contains(@class, 'fc-datagrid-body')]//tr",
-    )
-
-    LOG.info(f"Found {len(resource_rows)} resource rows for {building_div_id}")
 
     availability_rows = driver.find_elements(
         By.XPATH,
@@ -65,29 +62,23 @@ def extract_room_data(
     )
     LOG.info(f"Found {len(availability_rows)} availability rows for {building_div_id}")
 
-    if len(resource_rows) != len(availability_rows):
-        LOG.warning(
-            f"Number of resource rows ({len(resource_rows)}) does not match number of availability rows ({len(availability_rows)})"
-        )
-
-    for res_row, avail_row in zip(resource_rows, availability_rows):
+    for avail_row in availability_rows:
+        LOG.debug(f"Inner Html: {avail_row.get_attribute('innerHTML')}")
         # Room name capture
-        room_name_elem = res_row.find_element(
-            By.XPATH,
-            ".//td[contains(@class, 'fc-datagrid-cell')]//span[@class='fc-datagrid-cell-main']",
-        )
-
-        room_name = room_name_elem.text.strip()
 
         a_elements = avail_row.find_elements(
             By.XPATH, ".//a[contains(@class, 'fc-timeline-event')]"
         )
 
         slots = []
+        room_name_in_title = ""
 
-        for a_elem in a_elements:
+        for a_elem in a_elements[:1]:
             # Get the title attribute
             title = a_elem.get_attribute("title")
+
+            LOG.debug(f"Availability Row Title: {title}")
+
             if not title:
                 continue
 
@@ -100,6 +91,9 @@ def extract_room_data(
                 status = parts[2]
                 time = time_and_date.split(" ")[0]
 
+                if status.lower() == "unavailable/padding":
+                    status = "unavailable"
+
                 slots.append(
                     {
                         "StartTime": convert_to_24_hour_format(time),
@@ -107,7 +101,7 @@ def extract_room_data(
                         "Status": status.lower(),
                     }
                 )
-        room = {"roomNumber": room_name, "slots": slots[:5]}
+        room = {"roomNumber": room_name_in_title, "slots": slots[:5]}
         rooms.append(room)
 
     building_data = {

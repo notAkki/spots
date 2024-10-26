@@ -14,7 +14,7 @@ def get_available_slots(
     rooms_dict = {}
     for a_element in available_slot_elements:
         title = a_element.get_attribute("title")
-        LOG.info(f"Title: {title}")
+
         # Parse the title to extract time, date, room name, status
         # Example title: "10:30am Saturday, October 26, 2024 - Study Room 336 A - Available"
         parts = title.split(" - ")
