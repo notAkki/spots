@@ -95,6 +95,7 @@ export default function Left({
                             {building.rooms &&
                                 Object.entries(building.rooms).map(
                                     ([roomNumber, room]) => {
+                                        console.log("Room object:", room); // Log the room object
                                         return (
                                             <div
                                                 key={roomNumber}
@@ -102,28 +103,25 @@ export default function Left({
                                             >
                                                 <div className="flex gap-4 items-center h-[fit-content]">
                                                     <div className="w-18">
-                                                        {building.building_code}{" "}
-                                                        {roomNumber}
+                                                        {building.building_code} {roomNumber}
                                                     </div>
                                                     <div className="relative">
-                                                        {statusIndicator(
-                                                            room.slots[0].Status
+                                                        {room.slots && room.slots.length > 0 ? (
+                                                            statusIndicator(room.slots[0].Status)
+                                                        ) : (
+                                                            <div className="text-gray-500">No slots available</div>
                                                         )}
                                                     </div>
                                                 </div>
                                                 <ul className="text-right">
-                                                    {room.slots.map(
-                                                        (slot, index) => (
+                                                    {room.slots && room.slots.length > 0 ? (
+                                                        room.slots.map((slot, index) => (
                                                             <li key={index}>
-                                                                {formatTime(
-                                                                    slot.StartTime
-                                                                )}{" "}
-                                                                -{" "}
-                                                                {formatTime(
-                                                                    slot.EndTime
-                                                                )}
+                                                                {formatTime(slot.StartTime)} - {formatTime(slot.EndTime)}
                                                             </li>
-                                                        )
+                                                        ))
+                                                    ) : (
+                                                        <li>No slots available</li>
                                                     )}
                                                 </ul>
                                             </div>

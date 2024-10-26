@@ -8,7 +8,7 @@ LOG = logging.getLogger(__name__)
 
 
 def get_available_slots(slots: list[HtmlElement], data_map: dict[str, str]):
-    data_objects: list[dict[str, str]] = []
+    rooms: list[dict[str, str]] = []
 
     for slot in slots:
         room = {}
@@ -53,12 +53,14 @@ def get_available_slots(slots: list[HtmlElement], data_map: dict[str, str]):
                         }
                     )
 
-                room["building"] = data_map["building"]
-                room["building_code"] = data_map["building_code"]
-                room["building_status"] = data_map["building_status"]
-                room["coords"] = data_map["coords"]
-                data_objects.append(room)
+        rooms.append(room)
 
-    LOG.info(f"Slot to room map: {data_objects}")
-
-    return data_objects
+    return [
+        {
+            "building": data_map["building"],
+            "building_code": data_map["building_code"],
+            "building_status": data_map["building_status"],
+            "coords": data_map["coords"],
+            "rooms": rooms,
+        }
+    ]

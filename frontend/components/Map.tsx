@@ -30,7 +30,9 @@ export default function Map({
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const [center, setCenter] = useState<[number, number]>([-80.5425, 43.4695]);
+  const [center, setCenter] = useState<[number, number]>([
+    -86.805059, 33.499502,
+  ]);
   const [zoom, setZoom] = useState(16.25);
   const [pitch, setPitch] = useState(52);
 

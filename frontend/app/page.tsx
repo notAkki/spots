@@ -47,16 +47,19 @@ export default function Home() {
 
             try {
               // Send the user's location to the backend
-              const res = await fetch("/api/open-classrooms", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  lat: latitude,
-                  lng: longitude,
-                }),
-              });
+              const res = await fetch(
+                `http://localhost:8080/api/library-study-rooms`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    lat: latitude,
+                    lng: longitude,
+                  }),
+                }
+              );
 
               const data = await res.json();
               setData(data);
@@ -70,7 +73,9 @@ export default function Home() {
             console.error("Error fetching location here:", error);
 
             // Fallback to fetching unsorted data
-            const res = await fetch("/api/open-classrooms");
+            const res = await fetch(
+              `http://localhost:8080/api/library-study-rooms`
+            );
             const defaultData = await res.json();
             setData(defaultData);
 
@@ -81,9 +86,12 @@ export default function Home() {
         );
       } else {
         console.error("Geolocation is not supported by this browser.");
-        const res = await fetch("/api/open-classrooms", {
-          method: "GET",
-        });
+        const res = await fetch(
+          `http://localhost:8080/api/library-study-rooms`,
+          {
+            method: "GET",
+          }
+        );
         const defaultData = await res.json();
         setData(defaultData);
         setLoading(false);

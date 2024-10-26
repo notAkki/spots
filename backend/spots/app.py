@@ -1,7 +1,7 @@
-from tarfile import fully_trusted_filter
 from flask import Flask, jsonify
 import os
 import logging
+from flask_cors import CORS
 
 from spots.constants import STERNE_DATA_MAP, LISTER_DATA_MAP
 from spots.models import Element
@@ -12,9 +12,7 @@ logging.basicConfig(level=logging.INFO)
 LOG = logging.getLogger(__name__)
 
 app = Flask(__name__)
-
-
-SCRAPERR_API = "http://scraperr_api:8000"
+_ = CORS(app)
 
 
 @app.route("/api/healthcheck", methods=["GET"])
@@ -22,7 +20,7 @@ def healthcheck():
     return jsonify({"message": "OK"})
 
 
-@app.route("/api/library-study-rooms", methods=["GET"])
+@app.route("/api/library-study-rooms", methods=["GET", "POST"])
 async def get_library_study_rooms():
     elements = scrape(
         url="https://libcal.library.uab.edu/allspaces",

@@ -14,6 +14,7 @@ cryptography==43.0.3
 exceptiongroup==1.2.2
 fake-useragent==1.5.1
 Flask==3.0.3
+Flask-Cors==5.0.0
 h11==0.14.0
 h2==4.1.0
 hpack==4.0.0
