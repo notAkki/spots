@@ -1,31 +1,30 @@
 "use client";
-import Left from "@/components/Left";
 import { useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import Map from "@/components/Map";
-import Loading from "@/components/Loading";
 import Image from "next/image";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Map as MapComponent } from "@/components/controls/map/map";
+import { Loading } from "@/components/ui";
+import { BuildingDrawer } from "@/components/controls";
+import { type MapData } from "@/lib";
+import { mapDataService } from "@/lib/services";
 
-interface dataFormat {
-  building: string;
-  building_code: string;
-  building_status: string;
-  rooms: {
-    [key: string]: {
-      roomNumber: string;
-      slots: { StartTime: string; EndTime: string; Status: string }[];
-    };
-  };
-  coords: [number, number];
-  distance: number;
-}
-
-export default function Home() {
-  const [data, setData] = useState<dataFormat[]>([]);
+export default function OpenSpots() {
+  const [data, setData] = useState<MapData[]>([]);
   const [activeBuilding, setActiveBuilding] = useState<string | null>(null);
   const [userPos, setUserPos] = useState<[number, number] | null>(null);
   const [loading, setLoading] = useState(true);
+  const startingCenterCoords = process.env.NEXT_PUBLIC_STARTING_CENTER_COORDS
+    ? (process.env.NEXT_PUBLIC_STARTING_CENTER_COORDS.split(",").map(
+        Number
+      ) as [number, number])
+    : undefined;
+  const startingZoom = process.env.NEXT_PUBLIC_STARTING_ZOOM
+    ? Number(process.env.NEXT_PUBLIC_STARTING_ZOOM)
+    : undefined;
+  const startingPitch = process.env.NEXT_PUBLIC_STARTING_PITCH
+    ? Number(process.env.NEXT_PUBLIC_STARTING_PITCH)
+    : undefined;
 
   const handleMarkerClick = (building: string) => {
     setActiveBuilding(building);
@@ -40,58 +39,24 @@ export default function Home() {
           async (position) => {
             const { latitude, longitude } = position.coords;
             setUserPos([latitude, longitude]);
-            // console.log("User location (Frontend):", {
-            //     lat: latitude,
-            //     lng: longitude,
-            // });
 
-            try {
-              // Send the user's location to the backend
-              const res = await fetch(
-                `http://localhost:8080/api/library-study-rooms`,
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    lat: latitude,
-                    lng: longitude,
-                  }),
-                }
-              );
-
-              const data = await res.json();
-              setData(data);
-            } catch (error) {
-              console.error("Failed to fetch data from backend:", error);
-            } finally {
-              setLoading(false);
-            }
+            const data = await mapDataService.sendUserLocation(
+              latitude,
+              longitude
+            );
+            setData(data);
+            setLoading(false);
           },
-          (error) => { // Handle error here
+          async (error) => {
             console.error("Error fetching location here:", error);
-            // Only fetch default data if there's an error
-            const fetchDefaultData = async () => {
-              const res = await fetch(
-                `http://localhost:8080/api/library-study-rooms`
-              );
-              const defaultData = await res.json();
-              setData(defaultData);
-              setLoading(false);
-            };
-            fetchDefaultData();
+            const defaultData = await mapDataService.sendDefaultLocationData();
+            setData(defaultData);
+            setLoading(false);
           }
         );
       } else {
         console.error("Geolocation is not supported by this browser.");
-        const res = await fetch(
-          `http://localhost:8080/api/library-study-rooms`,
-          {
-            method: "GET",
-          }
-        );
-        const defaultData = await res.json();
+        const defaultData = await mapDataService.sendDefaultLocationData();
         setData(defaultData);
         setLoading(false);
       }
@@ -99,16 +64,6 @@ export default function Home() {
 
     fetchLocationAndData();
   }, []);
-
-  // useEffect(() => {
-  //     const fetchData = async () => {
-  //         const res = await fetch("/api/open-classrooms");
-  //         const data = await res.json();
-  //         setData(data);
-  //     };
-
-  //     fetchData();
-  // }, []);
 
   if (loading) {
     return <Loading />;
@@ -134,7 +89,7 @@ export default function Home() {
               </AlertDescription>
             </Alert>
           </div>
-          <Left
+          <BuildingDrawer
             data={data}
             activeBuilding={activeBuilding}
             setActiveBuilding={setActiveBuilding}
@@ -142,10 +97,13 @@ export default function Home() {
         </ScrollArea>
       </div>
       <div className="h-[60vh] basis-3/5 sm:h-screen">
-        <Map
+        <MapComponent
           data={data}
           handleMarkerClick={handleMarkerClick}
           userPos={userPos}
+          startingCenterCoords={startingCenterCoords}
+          startingZoom={startingZoom}
+          startingPitch={startingPitch}
         />
       </div>
     </main>

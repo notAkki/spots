@@ -5,76 +5,40 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  DRAWER_STATUS_TO_COLOR,
+  formatTime,
+  INDICATOR_STATUS_TO_COLOR,
+  type MapData,
+} from "@/lib";
 
-interface DataFormat {
-  building: string;
-  building_code: string;
-  building_status: string;
-  rooms: {
-    [key: string]: {
-      roomNumber: string;
-      slots: { StartTime: string; EndTime: string; Status: string }[];
-    };
-  };
-  coords: [number, number];
-}
-
-function formatTime(timeString: string) {
-  const options = {
-    hour: "numeric" as "numeric",
-    minute: "numeric" as "numeric",
-    hour12: true,
-  };
-
-  console.log(timeString);
-
-  // Create a date object from the time string
-  const time = new Date(`1970-01-01T${timeString}`);
-
-  // Check if the date is valid
-  if (isNaN(time.getTime())) {
-    console.error("Invalid time string:", timeString);
-    return "Invalid time"; // Return a default value or handle the error as needed
-  }
-
-  return new Intl.DateTimeFormat("en-US", options).format(time);
-}
-
-function statusLabel(status: string) {
+export const statusLabel = (status: string) => {
+  const color =
+    DRAWER_STATUS_TO_COLOR[status as keyof typeof DRAWER_STATUS_TO_COLOR];
   return (
-    <div
-      className={`rounded-lg px-2 py-1 text-sm w-[fit-content]
-                ${status === "unavailable" && "bg-red-700/20 text-red-300/80"}
-                ${status === "available" && "bg-green-800/20 text-green-300/90"}
-                ${status === "upcoming" && "bg-amber-800/20 text-amber-300/90"}
-                `}
-    >
+    <div className={`rounded-lg px-2 py-1 text-sm w-[fit-content] ${color}`}>
       {status}
     </div>
   );
-}
+};
 
 function statusIndicator(status: string) {
-  return (
-    <div
-      className={`h-2 w-2 rounded-full 
-                    ${status === "unavailable" && "bg-red-400"}
-                    ${status === "available" && "bg-green-400"}
-                    ${status === "upcoming" && "bg-amber-400"}
-                        `}
-    ></div>
-  );
+  const color =
+    INDICATOR_STATUS_TO_COLOR[status as keyof typeof INDICATOR_STATUS_TO_COLOR];
+  return <div className={`h-2 w-2 rounded-full ${color}`}></div>;
 }
 
-export default function Left({
+export type BuildingDrawerProps = {
+  data: MapData[];
+  activeBuilding: string | null;
+  setActiveBuilding: (building: string) => void;
+};
+
+export const BuildingDrawer = ({
   data,
   activeBuilding,
   setActiveBuilding,
-}: {
-  data: DataFormat[];
-  activeBuilding: string | null;
-  setActiveBuilding: (building: string) => void;
-}) {
+}: BuildingDrawerProps) => {
   return (
     <div className="px-8">
       <Accordion
@@ -102,7 +66,6 @@ export default function Left({
             <AccordionContent className="divide-y divide-dashed divide-zinc-600">
               {building.rooms &&
                 Object.entries(building.rooms).map(([roomNumber, room]) => {
-                  console.log("Room object:", room); // Log the room object
                   return (
                     <div
                       key={roomNumber}
@@ -143,4 +106,4 @@ export default function Left({
       </Accordion>
     </div>
   );
-}
+};

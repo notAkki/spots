@@ -1,26 +1,11 @@
-// /app/api/open-classrooms/route.ts
-
 import { NextResponse } from "next/server";
-
-// Define the structure of the expected data here
-interface dataFormat {
-  building: string;
-  building_code: string;
-  rooms: {
-    roomNumber: string;
-    slots: { StartTime: string; EndTime: string; status: string }[];
-  }[];
-  coords: [number, number];
-  distance: number;
-}
+import { type MapData } from "@/lib";
 
 export async function POST(req: Request) {
   try {
-    // Extract user location from the request body
     const { lat, lng } = await req.json();
 
-    // Send the user location to the backend
-    const response = await fetch(`${process.env.API_URL}/api/open-classrooms`, {
+    const response = await fetch(process.env.API_URL as string, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,8 +20,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Get data from backend
-    const data: dataFormat[] = await response.json();
+    const data: MapData[] = await response.json();
     return NextResponse.json(data);
   } catch (error) {
     console.error("Error in route:", error);
@@ -49,8 +33,7 @@ export async function POST(req: Request) {
 
 export async function GET() {
   try {
-    // Fetch the default data without location
-    const response = await fetch(`${process.env.API_URL}/api/open-classrooms`, {
+    const response = await fetch(process.env.API_URL as string, {
       method: "GET",
       cache: "no-cache",
     });
@@ -62,8 +45,7 @@ export async function GET() {
       );
     }
 
-    // Get data from backend
-    const data: dataFormat[] = await response.json();
+    const data: MapData[] = await response.json();
     return NextResponse.json(data);
   } catch (error) {
     console.error("Error in GET route:", error);

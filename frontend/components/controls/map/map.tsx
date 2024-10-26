@@ -3,65 +3,40 @@ import React from "react";
 import { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { MapData } from "@/lib/types";
+import { createMarkerFromMapData } from "@/lib/helpers";
 
-interface dataFormat {
-  building: string;
-  building_code: string;
-  building_status: string;
-  rooms: {
-    [key: string]: {
-      roomNumber: string;
-      slots: { StartTime: string; EndTime: string; Status: string }[];
-    };
-  };
-  coords: [number, number];
-  distance: number;
-}
+export type MapProps = {
+  data: MapData[];
+  handleMarkerClick: (building: string) => void;
+  userPos: [number, number] | null;
+  startingCenterCoords?: [number, number];
+  startingZoom?: number;
+  startingPitch?: number;
+};
 
-export default function Map({
+export const Map = ({
   data,
   handleMarkerClick,
   userPos,
-}: {
-  data: dataFormat[];
-  handleMarkerClick: (building: string) => void;
-  userPos: any;
-}) {
+  startingCenterCoords = [0, 0],
+  startingZoom = 100,
+  startingPitch = 100,
+}: MapProps) => {
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
-
-  const [center, setCenter] = useState<[number, number]>([
-    -86.805059, 33.499502,
-  ]);
-  const [zoom, setZoom] = useState(16.25);
-  const [pitch, setPitch] = useState(52);
-
+  const [center, setCenter] = useState<[number, number]>(startingCenterCoords);
+  const [zoom, setZoom] = useState<number>(startingZoom);
+  const [pitch, setPitch] = useState<number>(startingPitch);
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
-
-  const MAPBOX_STYLE_URL =
-    process.env.NEXT_PUBLIC_MAPBOX_STYLE_URL ||
-    "mapbox://styles/notakki/cm1o3v5kr00bl01pd2k7tho6i";
-
-  function getColorByStatus(status: string) {
-    switch (status) {
-      case "available":
-        return "h-2 w-2 rounded-full bg-green-400 shadow-[0px_0px_4px_2px_rgba(34,197,94,0.7)]";
-      case "unavailable":
-        return "h-2 w-2 rounded-full bg-red-400 shadow-[0px_0px_4px_2px_rgba(239,68,68,0.9)]";
-      case "upcoming":
-        return "h-2 w-2 rounded-full bg-amber-400 shadow-[0px_0px_4px_2px_rgba(245,158,11,0.9)]";
-      default:
-        return "gray";
-    }
-  }
+  const MAPBOX_STYLE_URL = process.env.NEXT_PUBLIC_MAPBOX_STYLE_URL;
 
   useEffect(() => {
-    if (mapboxToken) {
-      mapboxgl.accessToken = mapboxToken;
-    } else {
-      console.error("Mapbox token is not defined");
+    if (!mapboxToken) {
+      throw new Error("Mapbox token is not defined");
     }
-    mapboxToken;
+
+    mapboxgl.accessToken = mapboxToken;
     mapRef.current = new mapboxgl.Map({
       style: MAPBOX_STYLE_URL,
       container: mapContainerRef.current as HTMLElement,
@@ -83,39 +58,21 @@ export default function Map({
     });
 
     data.map((data) => {
-      const el = document.createElement("div");
-      el.className = getColorByStatus(data.building_status);
-
-      el.addEventListener("click", () => {
-        const accordionItem = document.getElementById(data.building_code);
-
-        setTimeout(() => {
-          if (accordionItem) {
-            accordionItem.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        }, 300);
-
-        handleMarkerClick(data.building_code);
-      });
+      const buildingMarker = createMarkerFromMapData(data, handleMarkerClick);
 
       if (mapRef.current && data.coords) {
-        new mapboxgl.Marker(el)
+        new mapboxgl.Marker(buildingMarker)
           .setLngLat([data.coords[0], data.coords[1]])
           .addTo(mapRef.current);
       }
     });
 
     if (userPos) {
-      const e2 = document.createElement("div");
-      e2.className =
+      const userMarker = document.createElement("div");
+      userMarker.className =
         "h-3 w-3 border-[1.5px] border-zinc-50 rounded-full bg-blue-400 shadow-[0px_0px_4px_2px_rgba(14,165,233,1)]";
-
-      new mapboxgl.Marker(e2)
+      new mapboxgl.Marker(userMarker)
         .setLngLat([userPos[1], userPos[0]])
-        // .setLngLat([-80.5425, 43.4695])
         .addTo(mapRef.current);
     }
 
@@ -151,4 +108,4 @@ export default function Map({
       </div>
     </div>
   );
-}
+};
