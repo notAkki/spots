@@ -82,3 +82,8 @@ def extract_room_data(
     )
 
     return building_data.model_dump()
+
+
+def extract_buidling_data (
+        
+)

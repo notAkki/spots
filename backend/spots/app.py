@@ -23,11 +23,11 @@ _ = CORS(app, resources={r"/*": {"origins": "*"}})
 def healthcheck():
     return jsonify({"message": "OK"})
 
-
-@app.route("/api/library-study-rooms", methods=["GET", "POST"])
-def get_library_study_rooms():
+@app.route("/api/get-spots", methods=["GET", "POST"])
+def get_all_spots():
     user_lat = 0
     user_lng = 0
+
 
     if request.method == "POST":
         data: dict[str, Any] | None = request.json
@@ -35,6 +35,30 @@ def get_library_study_rooms():
             user_lat: float = data.get("lat", 0)
             user_lng: float = data.get("lng", 0)
 
+    library_rooms = get_library_study_rooms
+    buildings = get_buildings
+    return_data = {**}
+
+def get_buildings(user_lat: int = 0, user_lng: int = 0):
+    LOG.info(f"User lat: {user_lat}, User lng: {user_lng}")
+
+    driver = create_driver()
+    driver.implicitly_wait(10)
+
+    try:
+        LOG.info(f"Visiting URL: https://uab-it.github.io/projects/SenSource/")
+
+        _ = WebDriverWait(driver, 30).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "fc-datagrid-cell"))
+        )
+    
+    finally: 
+        driver.quit()
+
+
+
+# @app.route("/api/library-study-rooms", methods=["GET", "POST"])
+def get_library_study_rooms(user_lat: int = 0, user_lng: int = 0):
     LOG.info(f"User lat: {user_lat}, User lng: {user_lng}")
 
     driver = create_driver()
