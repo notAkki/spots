@@ -1,18 +1,19 @@
+import logging
 from flask import Flask, jsonify
 import os
-import logging
 from flask_cors import CORS
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 
-from spots.constants import STERNE_DATA_MAP, LISTER_DATA_MAP
-from spots.models import Element
-from spots.scraping import scrape
-from spots.helpers import get_available_slots
+from constants import STERNE_DATA_MAP, LISTER_DATA_MAP
+from scraping import create_driver
 
 logging.basicConfig(level=logging.INFO)
 LOG = logging.getLogger(__name__)
 
 app = Flask(__name__)
-_ = CORS(app)
+_ = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route("/api/healthcheck", methods=["GET"])
@@ -21,54 +22,94 @@ def healthcheck():
 
 
 @app.route("/api/library-study-rooms", methods=["GET", "POST"])
-async def get_library_study_rooms():
-    elements = scrape(
-        url="https://libcal.library.uab.edu/allspaces",
-        xpaths=[
-            Element(
-                name="sterne",
-                xpath="//div[@id='s-lc-17033']//td[@class='fc-datagrid-cell fc-resource']",
-            ),
-            Element(
-                name="lister",
-                xpath="//div[@id='s-lc-17032']//td[@class='fc-datagrid-cell fc-resource']",
-            ),
-            Element(
-                name="sterne_slots",
-                xpath="//div[@id='s-lc-17033']//td[@class='fc-timeline-lane fc-resource']",
-                return_html=True,
-            ),
-            Element(
-                name="lister_slots",
-                xpath="//div[@id='s-lc-17032']//td[@class='fc-timeline-lane fc-resource']",
-                return_html=True,
-            ),
-        ],
+def get_library_study_rooms():
+    driver = create_driver()
+    driver.implicitly_wait(10)
+
+    try:
+        LOG.info(f"Visiting URL: https://libcal.library.uab.edu/allspaces")
+        driver.get("https://libcal.library.uab.edu/allspaces")
+
+        WebDriverWait(driver, 30).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "fc-datagrid-cell"))
+        )
+
+        # Extract data for Sterne Library
+        sterne_data = extract_room_data(driver, "s-lc-17033", STERNE_DATA_MAP)
+        # Extract data for Lister Building
+        lister_data = extract_room_data(driver, "s-lc-17032", LISTER_DATA_MAP)
+
+        full_rooms_data = [sterne_data, lister_data]
+
+        return jsonify(full_rooms_data)
+
+    finally:
+        driver.quit()
+
+
+def extract_room_data(driver, building_div_id, data_map):
+    rooms = []
+    resource_rows = driver.find_elements(
+        By.XPATH, f"//div[@id='{building_div_id}']//table[contains(@class, 'fc-datagrid-body')]//tr"
     )
+    LOG.info(f"Found {len(resource_rows)} resource rows for {building_div_id}")
 
-    sterne_rooms = elements["sterne"]
-    lister_rooms = elements["lister"]
-
-    sterne_room_groups = [e.text for e in sterne_rooms]
-    lister_room_groups = [e.text for e in lister_rooms]
-
-    sterne_rooms = [r.split(",") for r in sterne_room_groups]
-    lister_rooms = [r.split(",") for r in lister_room_groups]
-
-    sterne_slots = elements["sterne_slots"][0].html
-    lister_slots = elements["lister_slots"][0].html
-
-    LOG.info(f"Sterne slots: {sterne_slots}")
-
-    sterne_rooms_data = (
-        get_available_slots(sterne_slots, STERNE_DATA_MAP) if sterne_slots else []
+    availability_rows = driver.find_elements(
+        By.XPATH, f"//div[@id='{building_div_id}']//table[contains(@class, 'fc-timeline-body')]//tr"
     )
-    lister_rooms_data = (
-        get_available_slots(lister_slots, LISTER_DATA_MAP) if lister_slots else {}
-    )
+    LOG.info(f"Found {len(availability_rows)} availability rows for {building_div_id}")
 
-    full_rooms_data = lister_rooms_data + sterne_rooms_data
-    return jsonify(full_rooms_data)
+
+    if len(resource_rows) != len(availability_rows):
+        LOG.error(
+            f"Number of resource rows ({len(resource_rows)}) does not match number of availability rows ({len(availability_rows)})"
+        )
+        return None
+
+    for res_row, avail_row in zip(resource_rows, availability_rows):
+        # Room name capture
+        room_name_elem = res_row.find_element(
+            By.XPATH,
+            ".//td[contains(@class, 'fc-datagrid-cell')]//span[@class='fc-datagrid-cell-main']",
+        )
+        room_name = room_name_elem.text.strip()
+
+        a_elements = avail_row.find_elements(
+            By.XPATH, ".//a[contains(@class, 'fc-timeline-event')]"
+        )
+
+        slots = []
+
+        for a_elem in a_elements:
+            # Get the title attribute
+            title = a_elem.get_attribute("title")
+            # The title may contain time and status
+            # For example: "10:30am Saturday, October 26, 2024 - Study Room 336 A - Available"
+            parts = title.split(" - ")
+            if len(parts) >= 3:
+                time_and_date = parts[0]
+                room_name_in_title = parts[1]
+                status = parts[2]
+                time = time_and_date.split(" ")[0]
+                slots.append(
+                    {
+                        "StartTime": time,
+                        "EndTime": "",  # We may need to find a way to get the end time
+                        "Status": status.lower(),
+                    }
+                )
+        room = {"roomNumber": room_name, "slots": slots}
+        rooms.append(room)
+
+    building_data = {
+        "building": data_map["building"],
+        "building_code": data_map["building_code"],
+        "building_status": data_map["building_status"],
+        "coords": data_map["coords"],
+        "rooms": rooms,
+    }
+
+    return building_data
 
 
 if __name__ == "__main__":

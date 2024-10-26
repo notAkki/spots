@@ -1,5 +1,7 @@
 venv/
+.venv/
 __pycache__/
 
 output.json
 webscrape.py
+out.html

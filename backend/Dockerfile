@@ -1,13 +1,14 @@
 # Use the official Python image as a parent image Stage 1
-FROM python:3.10.12-slim as pybuilder
+FROM python:3.10.12-slim-bullseye as pybuilder
 
 # Set the timezone environment variable
 ENV TZ=America/Toronto
 
-# Install tzdata package for timezone data and Chrome dependencies
+# Install tzdata and Chromium with its driver
 RUN apt-get update && \
     apt-get install -y tzdata wget gnupg unzip libnss3 libxss1 libappindicator1 \
-    fonts-liberation libasound2 libatk-bridge2.0-0 libgtk-3-0 xdg-utils && \
+    fonts-liberation libasound2 libatk-bridge2.0-0 libgtk-3-0 xdg-utils chromium \
+    chromium-driver && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone
 
@@ -21,7 +22,7 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Use a slim Python image for the final build Stage 2
-FROM python:3.10.12-slim
+FROM python:3.10.12-slim-bullseye
 
 # Set the timezone environment variable
 ENV TZ=America/Toronto
@@ -29,17 +30,9 @@ ENV TZ=America/Toronto
 # Set the working directory in the final image
 WORKDIR /app
 
-# Install chrome dependencies
-
+# Install Chromium and its driver
 RUN apt-get update && \
-    apt-get install -y wget gnupg unzip
-
-RUN apt-get update
-RUN apt-get install -y wget gnupg supervisor
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-RUN apt-get update
-RUN apt-get install -y google-chrome-stable
+    apt-get install -y chromium chromium-driver
 
 # Copy the installed dependencies from the builder stage
 COPY --from=pybuilder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
