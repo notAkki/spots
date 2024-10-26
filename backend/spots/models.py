@@ -1,9 +1,5 @@
 # PDM
-from pydantic import BaseModel, SkipValidation
-from lxml.etree import _Element
-
-
-class HtmlElement(_Element): ...
+from pydantic import BaseModel
 
 
 class Element(BaseModel):
@@ -11,16 +7,6 @@ class Element(BaseModel):
     xpath: str
     url: str | None = None
     return_html: bool = False
-
-
-class CapturedElement(BaseModel):
-    xpath: str
-    text: str
-    name: str
-    html: SkipValidation[list[HtmlElement] | None] = None
-
-    class Config:
-        arbitrary_types_allowed = True  # Allow arbitrary types
 
 
 class RoomSlot(BaseModel):
@@ -38,6 +24,13 @@ class DataFormat(BaseModel):
     building: str
     building_code: str
     building_status: str
-    rooms: dict[str, Room]
+    rooms: list[Room]
     coords: tuple[float, float]
     distance: float
+
+
+class RoomDataMap(BaseModel):
+    building: str
+    building_code: str
+    building_status: str
+    coords: tuple[float, float]
