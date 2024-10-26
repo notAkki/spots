@@ -5,9 +5,10 @@ from flask_cors import CORS
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-
-from constants import STERNE_DATA_MAP, LISTER_DATA_MAP
-from scraping import create_driver
+from selenium.webdriver.chrome.webdriver import WebDriver
+from spots.utils import convert_to_24_hour_format
+from spots.constants import STERNE_DATA_MAP, LISTER_DATA_MAP
+from spots.scraping import create_driver
 
 logging.basicConfig(level=logging.INFO)
 LOG = logging.getLogger(__name__)
@@ -30,7 +31,7 @@ def get_library_study_rooms():
         LOG.info(f"Visiting URL: https://libcal.library.uab.edu/allspaces")
         driver.get("https://libcal.library.uab.edu/allspaces")
 
-        WebDriverWait(driver, 30).until(
+        _ = WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.CLASS_NAME, "fc-datagrid-cell"))
         )
 
@@ -47,24 +48,27 @@ def get_library_study_rooms():
         driver.quit()
 
 
-def extract_room_data(driver, building_div_id, data_map):
+def extract_room_data(
+    driver: WebDriver, building_div_id: str, data_map: dict[str, str]
+) -> dict[str, str] | None:
     rooms = []
     resource_rows = driver.find_elements(
-        By.XPATH, f"//div[@id='{building_div_id}']//table[contains(@class, 'fc-datagrid-body')]//tr"
+        By.XPATH,
+        f"//div[@id='{building_div_id}']//table[contains(@class, 'fc-datagrid-body')]//tr",
     )
+
     LOG.info(f"Found {len(resource_rows)} resource rows for {building_div_id}")
 
     availability_rows = driver.find_elements(
-        By.XPATH, f"//div[@id='{building_div_id}']//table[contains(@class, 'fc-timeline-body')]//tr"
+        By.XPATH,
+        f"//div[@id='{building_div_id}']//td[@class='fc-timeline-lane fc-resource']",
     )
     LOG.info(f"Found {len(availability_rows)} availability rows for {building_div_id}")
 
-
     if len(resource_rows) != len(availability_rows):
-        LOG.error(
+        LOG.warning(
             f"Number of resource rows ({len(resource_rows)}) does not match number of availability rows ({len(availability_rows)})"
         )
-        return None
 
     for res_row, avail_row in zip(resource_rows, availability_rows):
         # Room name capture
@@ -72,6 +76,7 @@ def extract_room_data(driver, building_div_id, data_map):
             By.XPATH,
             ".//td[contains(@class, 'fc-datagrid-cell')]//span[@class='fc-datagrid-cell-main']",
         )
+
         room_name = room_name_elem.text.strip()
 
         a_elements = avail_row.find_elements(
@@ -83,6 +88,9 @@ def extract_room_data(driver, building_div_id, data_map):
         for a_elem in a_elements:
             # Get the title attribute
             title = a_elem.get_attribute("title")
+            if not title:
+                continue
+
             # The title may contain time and status
             # For example: "10:30am Saturday, October 26, 2024 - Study Room 336 A - Available"
             parts = title.split(" - ")
@@ -91,14 +99,15 @@ def extract_room_data(driver, building_div_id, data_map):
                 room_name_in_title = parts[1]
                 status = parts[2]
                 time = time_and_date.split(" ")[0]
+
                 slots.append(
                     {
-                        "StartTime": time,
-                        "EndTime": "",  # We may need to find a way to get the end time
+                        "StartTime": convert_to_24_hour_format(time),
+                        "EndTime": convert_to_24_hour_format(time, add_hours=0.5),
                         "Status": status.lower(),
                     }
                 )
-        room = {"roomNumber": room_name, "slots": slots}
+        room = {"roomNumber": room_name, "slots": slots[:5]}
         rooms.append(room)
 
     building_data = {

@@ -69,19 +69,18 @@ export default function Home() {
               setLoading(false);
             }
           },
-          async (error) => {
+          (error) => { // Handle error here
             console.error("Error fetching location here:", error);
-
-            // Fallback to fetching unsorted data
-            const res = await fetch(
-              `http://localhost:8080/api/library-study-rooms`
-            );
-            const defaultData = await res.json();
-            setData(defaultData);
-
-            // console.log("Default data (no location):", defaultData);
-            setData(defaultData);
-            setLoading(false);
+            // Only fetch default data if there's an error
+            const fetchDefaultData = async () => {
+              const res = await fetch(
+                `http://localhost:8080/api/library-study-rooms`
+              );
+              const defaultData = await res.json();
+              setData(defaultData);
+              setLoading(false);
+            };
+            fetchDefaultData();
           }
         );
       } else {

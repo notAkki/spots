@@ -44,7 +44,6 @@ sortedcontainers==2.4.0
 soupsieve==2.6
 trio==0.27.0
 trio-websocket==0.11.1
-types-selenium==3.141.9
 typing_extensions==4.12.2
 urllib3==2.2.3
 webdriver-manager==4.0.2

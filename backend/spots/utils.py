@@ -1,6 +1,13 @@
 import math
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
 import re
+
+
+def convert_to_24_hour_format(time_str: str, add_hours: int | float = 0) -> str:
+    time_obj = datetime.strptime(time_str, "%I:%M%p")
+    # Add hours and handle overflow
+    time_obj += timedelta(hours=add_hours)
+    return time_obj.strftime("%H:%M:%S")
 
 
 def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
