@@ -15,12 +15,6 @@ export const DRAWER_STATUS_TO_COLOR = {
   upcoming: "bg-amber-800/20 text-amber-300/90",
 };
 
-export const INDICATOR_STATUS_TO_COLOR = {
-  available: "bg-green-400",
-  unavailable: "bg-red-400",
-  upcoming: "bg-amber-400",
-};
-
 export const createMarkerFromMapData = (
   data: MapData,
   handleMarkerClick: (building: string) => void

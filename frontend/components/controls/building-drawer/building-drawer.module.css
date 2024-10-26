@@ -1,0 +1,26 @@
+.available {
+  background-color: #34d399;
+}
+
+.unavailable {
+  background-color: #f87171;
+}
+
+.upcoming {
+  background-color: #fbbd23;
+}
+
+.available-label {
+  background-color: rgb(22 101 52 / 0.3);
+  color: rgb(134 239 172 / 0.9);
+}
+
+.unavailable-label {
+  background-color: rgb(185 28 28 / 0.3);
+  color: rgb(252 165 165 / 0.9);
+}
+
+.upcoming-label {
+  background-color: rgb(146 64 14 / 0.3);
+  color: rgb(252 211 77 / 0.9);
+}

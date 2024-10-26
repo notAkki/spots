@@ -5,27 +5,35 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  DRAWER_STATUS_TO_COLOR,
-  formatTime,
-  INDICATOR_STATUS_TO_COLOR,
-  type MapData,
-} from "@/lib";
+import { DRAWER_STATUS_TO_COLOR, formatTime, type MapData } from "@/lib";
+
+import { clsx } from "clsx";
+import classes from "./building-drawer.module.css";
 
 export const statusLabel = (status: string) => {
-  const color =
-    DRAWER_STATUS_TO_COLOR[status as keyof typeof DRAWER_STATUS_TO_COLOR];
   return (
-    <div className={`rounded-lg px-2 py-1 text-sm w-[fit-content] ${color}`}>
+    <div
+      className={clsx("rounded-lg px-2 py-1 text-sm w-[fit-content]", {
+        [classes["available-label"]]: status === "available",
+        [classes["unavailable-label"]]: status === "unavailable",
+        [classes["upcoming-label"]]: status === "upcoming",
+      })}
+    >
       {status}
     </div>
   );
 };
 
 function statusIndicator(status: string) {
-  const color =
-    INDICATOR_STATUS_TO_COLOR[status as keyof typeof INDICATOR_STATUS_TO_COLOR];
-  return <div className={`h-2 w-2 rounded-full ${color}`}></div>;
+  return (
+    <div
+      className={clsx("h-2 w-2 rounded-full", {
+        [classes.available]: status === "available",
+        [classes.unavailable]: status === "unavailable",
+        [classes.upcoming]: status === "upcoming",
+      })}
+    />
+  );
 }
 
 export type BuildingDrawerProps = {
