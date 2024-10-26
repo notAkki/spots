@@ -1,6 +1,7 @@
 # PDM
 from typing import Literal
 from pydantic import BaseModel
+from typing import Optional
 
 
 class Element(BaseModel):
@@ -33,6 +34,13 @@ class DataFormat(BaseModel):
 
 class RoomDataMap(BaseModel):
     building: str
-    building_code: str
+    building_code: Optional[str]
     building_status: str
     coords: tuple[float, float]
+
+class LocationData(RoomDataMap):
+    opening_time: str
+    closing_time: str
+    
+    
+

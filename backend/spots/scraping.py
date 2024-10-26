@@ -2,11 +2,13 @@
 
 import logging
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.chrome.options import Options
 
 LOG = logging.getLogger(__name__)
-
+chromedriver_exec_path = '/usr/bin/chromedriver'
 
 def create_driver() -> WebDriver:
     LOG.info("Creating driver")
@@ -24,9 +26,10 @@ def create_driver() -> WebDriver:
     )
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    # chrome_options.binary_location = chromedriver_exec_path
     chrome_options.add_experimental_option("useAutomationExtension", False)
 
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service=Service(chromedriver_exec_path), options=chrome_options)
     driver.execute_cdp_cmd(
         "Page.addScriptToEvaluateOnNewDocument",
         {
