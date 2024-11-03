@@ -6,6 +6,8 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 
+import { Alert, AlertDescription } from "@/components/ui/alert";
+
 interface DataFormat {
     building: string;
     building_code: string;
@@ -55,6 +57,9 @@ function statusIndicator(status: string) {
     );
 }
 
+const date = new Date();
+const day = date.getDay();
+
 export default function Left({
     data,
     activeBuilding,
@@ -64,8 +69,29 @@ export default function Left({
     activeBuilding: string | null;
     setActiveBuilding: (building: string) => void;
 }) {
+    if (data.length === 0 || !data) {
+        return (
+            <div className="px-8 my-2">
+                <Alert className="mx-auto w-fit text-center">
+                    <AlertDescription>
+                        Data not available after 10:00 PM
+                    </AlertDescription>
+                </Alert>
+            </div>
+        );
+    }
     return (
         <div className="px-8">
+            {day == 0 || day == 6 ? (
+                <div className="my-2">
+                    <Alert className="mx-auto w-fit text-center">
+                        <AlertDescription>
+                            Data on weekends represents data for the coming
+                            Monday
+                        </AlertDescription>
+                    </Alert>
+                </div>
+            ) : null}
             <Accordion
                 type="single"
                 collapsible

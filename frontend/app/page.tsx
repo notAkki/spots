@@ -7,6 +7,15 @@ import Loading from "@/components/Loading";
 import Image from "next/image";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+
 interface dataFormat {
     building: string;
     building_code: string;
@@ -96,16 +105,6 @@ export default function Home() {
         fetchLocationAndData();
     }, []);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const res = await fetch("/api/open-classrooms");
-    //         const data = await res.json();
-    //         setData(data);
-    //     };
-
-    //     fetchData();
-    // }, []);
-
     if (loading) {
         return <Loading />;
     }
@@ -120,11 +119,6 @@ export default function Home() {
                         height={200}
                         alt="Logo"
                     />
-                    <Alert className="h-fit text-pretty w-40">
-                        <AlertDescription>
-                            Availability may differ during exam period
-                        </AlertDescription>
-                    </Alert>
                 </div>
                 <ScrollArea className="h-full">
                     <div className="w-full h-20 pl-8 pr-4 flex sm:hidden justify-between items-center">
@@ -134,11 +128,6 @@ export default function Home() {
                             height={200}
                             alt="Logo"
                         />
-                        <Alert className="h-fit text-pretty w-40">
-                            <AlertDescription>
-                                Availability may differ during exam period
-                            </AlertDescription>
-                        </Alert>
                     </div>
                     <Left
                         data={data}
